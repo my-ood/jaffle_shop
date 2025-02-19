@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+    - name: stripe
+      description: Data from Stripe
+      database: raw
+      schema: stripe
+      tables:
+        - name: payment
+          freshness: 
+            error_after: {count: 30, period: day}
+            warn_after: {count: 7, period: day}
+          loaded_at_field: _batched_at
+          description: One record per payment
