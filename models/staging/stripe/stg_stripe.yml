@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_stripe__payments
+    description: Staged data from stripe payments
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+        description: Primary key for payments.
+      - name: order_id
+        description: Foreign key for stg_jaffle_shop__orders.order_id
+        tests:
+          - relationships:
+              field: order_id
+              to: ref('stg_jaffle_shop__orders')
+      - name: payment_method
+        description: The method used for paying. Four values accepted.
+        tests:
+           - accepted_values:
+              values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
+      - name: status
+        description: The status of the payment. T/F
+        tests:
+          - accepted_values:
+              values: ['success', 'fail']
+      - name: amount
+        description: The amount in $00.00

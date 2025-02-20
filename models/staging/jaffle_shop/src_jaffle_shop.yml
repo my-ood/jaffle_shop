@@ -2,7 +2,7 @@ version: 2
 
 sources:
     - name: jaffle_shop
-      description: This is a replica of the Postgres database used by our app
+      description: This is a replica of the Postgres database used by this app
       database: raw
       schema: jaffle_shop
       freshness: # make this a little more strict
@@ -12,6 +12,18 @@ sources:
       tables:
           - name: customers
             freshness: null
-            description: One record per customer.
+            description: raw customers data
+            columns:
+              - name: id
+                description: primary key for customers data
+                tests:
+                  - unique
+                  - not_null
           - name: orders
-            description: One record per order. Includes cancelled and deleted orders.
+            description: raw orders data
+            columns:
+              - name: id
+                tests:
+                 - unique
+                 - not_null
+                  
