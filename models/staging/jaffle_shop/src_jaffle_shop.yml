@@ -13,5 +13,16 @@ sources:
           - name: customers
             freshness: null
             description: One record per customer.
+            columns:
+              - name: id
+                tests:
+                  - unique
+                  - not_null
           - name: orders
             description: One record per order. Includes cancelled and deleted orders.
+            columns:
+              - name: id
+                tests:
+                 - unique
+                 - not_null
+                  
