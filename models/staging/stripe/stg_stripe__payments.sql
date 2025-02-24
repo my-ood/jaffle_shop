@@ -15,7 +15,7 @@ transformed as (
         paymentmethod as payment_method,
         
         -- convert from cents to dollars:
-        round(amount/100.0, 2) as payment_amount
+        {{ cents_to_dollars('amount') }} as payment_amount
     
     from source
 
