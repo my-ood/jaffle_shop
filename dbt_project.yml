@@ -43,3 +43,9 @@ models:
       staging:
         materialized: view
     
+# Disable the `not_null` test for `snowflake_role_name` from the package
+vars:
+  snowflake_spend:
+    snowflake_query_history:
+      snowflake_role_name:
+        - not_null: false

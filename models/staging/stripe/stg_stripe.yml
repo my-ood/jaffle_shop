@@ -20,10 +20,10 @@ models:
         tests:
            - accepted_values:
               values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
-      - name: status
+      - name: payment_status
         description: The status of the payment. T/F
         tests:
           - accepted_values:
               values: ['success', 'fail']
-      - name: amount
+      - name: payment_amount
         description: The amount in $00.00
